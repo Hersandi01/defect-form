@@ -198,15 +198,25 @@
       <label><input type="checkbox" id="boppCartonToggle"> BOPP Carton</label>
     </div>
     <div id="boppCartonDefects" class="defect-group">
-      <div class="defect-item">
-        <label>Wrinkled - Berkerut, Melipat</label>
-        <input type="text" name="boppCarton_wrinkled_qty" maxlength="2" placeholder="0">
-        <div class="category-box">
-          <label><input type="radio" name="boppCarton_wrinkled_cat" value="A"> A</label>
-          <label><input type="radio" name="boppCarton_wrinkled_cat" value="B"> B</label>
-          <label><input type="radio" name="boppCarton_wrinkled_cat" value="C"> C</label>
-        </div>
-      </div>
+      <div class="defect-item"><label>Wrinkled - Berkerut, Melipat</label><input type="text" name="boppCarton_wrinkled_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppCarton_wrinkled_cat" value="A"> A</label><label><input type="radio" name="boppCarton_wrinkled_cat" value="B"> B</label><label><input type="radio" name="boppCarton_wrinkled_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Scratched – Tergores</label><input type="text" name="boppCarton_scratched_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppCarton_scratched_cat" value="A"> A</label><label><input type="radio" name="boppCarton_scratched_cat" value="B"> B</label><label><input type="radio" name="boppCarton_scratched_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Unstuck - Tidak Lengket</label><input type="text" name="boppCarton_unstuck_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppCarton_unstuck_cat" value="A"> A</label><label><input type="radio" name="boppCarton_unstuck_cat" value="B"> B</label><label><input type="radio" name="boppCarton_unstuck_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Misplaced – Miring, Renggang, Posisi Tidak Tepat</label><input type="text" name="boppCarton_misplaced_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppCarton_misplaced_cat" value="A"> A</label><label><input type="radio" name="boppCarton_misplaced_cat" value="B"> B</label><label><input type="radio" name="boppCarton_misplaced_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Torn; Holed - Sobek, Berlubang</label><input type="text" name="boppCarton_torn_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppCarton_torn_cat" value="A"> A</label><label><input type="radio" name="boppCarton_torn_cat" value="B"> B</label><label><input type="radio" name="boppCarton_torn_cat" value="C"> C</label></div></div>
+    </div>
+  </div>
+
+  <!-- Section: BOPP Pack -->
+  <div class="section">
+    <div class="checkbox-toggle">
+      <label><input type="checkbox" id="boppPackToggle"> BOPP Pack</label>
+    </div>
+    <div id="boppPackDefects" class="defect-group">
+      <div class="defect-item"><label>Wrinkled - Berkerut, Melipat</label><input type="text" name="boppPack_wrinkled_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppPack_wrinkled_cat" value="A"> A</label><label><input type="radio" name="boppPack_wrinkled_cat" value="B"> B</label><label><input type="radio" name="boppPack_wrinkled_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Scratched – Tergores</label><input type="text" name="boppPack_scratched_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppPack_scratched_cat" value="A"> A</label><label><input type="radio" name="boppPack_scratched_cat" value="B"> B</label><label><input type="radio" name="boppPack_scratched_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Unstuck - Tidak Lengket</label><input type="text" name="boppPack_unstuck_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppPack_unstuck_cat" value="A"> A</label><label><input type="radio" name="boppPack_unstuck_cat" value="B"> B</label><label><input type="radio" name="boppPack_unstuck_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Misplaced – Miring, Renggang, Posisi Tidak Tepat</label><input type="text" name="boppPack_misplaced_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppPack_misplaced_cat" value="A"> A</label><label><input type="radio" name="boppPack_misplaced_cat" value="B"> B</label><label><input type="radio" name="boppPack_misplaced_cat" value="C"> C</label></div></div>
+      <div class="defect-item"><label>Torn; Holed - Sobek, Berlubang</label><input type="text" name="boppPack_torn_qty" maxlength="2" placeholder="0"><div class="category-box"><label><input type="radio" name="boppPack_torn_cat" value="A"> A</label><label><input type="radio" name="boppPack_torn_cat" value="B"> B</label><label><input type="radio" name="boppPack_torn_cat" value="C"> C</label></div></div>
     </div>
   </div>
 
@@ -219,7 +229,7 @@
 </main>
 
 <script>
-  const toggles = ["boppCarton"];
+  const toggles = ["boppCarton", "boppPack"];
   toggles.forEach(id => {
     const toggle = document.getElementById(`${id}Toggle`);
     const group = document.getElementById(`${id}Defects`);
