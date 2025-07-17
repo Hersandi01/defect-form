@@ -8,24 +8,53 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      background: #f9f9f9;
     }
     .section {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
     .defect-group {
       margin-left: 20px;
       display: none;
-      border-left: 2px solid #ccc;
-      padding-left: 10px;
+      border-left: 3px solid #0077cc;
+      padding-left: 20px;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    label {
-      display: block;
-      margin: 5px 0;
+    .defect-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
     }
-    input[type="text"], select {
+    .defect-item label {
+      flex: 1;
+      margin-right: 10px;
+    }
+    .defect-item input[type="text"] {
+      width: 60px;
+      margin-right: 10px;
+    }
+    .category-box {
+      display: flex;
+      gap: 10px;
+    }
+    .category-box label {
+      font-weight: normal;
+    }
+    .category-box input[type="radio"] {
+      margin-right: 5px;
+    }
+    input[type="text"], select, input[type="date"], input[type="time"] {
       padding: 5px;
       width: 100%;
       max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    h2 {
+      color: #005a9c;
     }
   </style>
 </head>
@@ -48,80 +77,20 @@
     <label>SKU: <input type="text" name="sku" required></label>
   </div>
 
-  <!-- Bagian Defect -->
+  <!-- Contoh Bagian Defect dengan Desain Baru -->
   <div class="section">
     <label><input type="checkbox" id="boppCartonToggle"> BOPP Carton</label>
     <div id="boppCartonDefects" class="defect-group">
-      <label>Wrinkled - Berkerut, Melipat: <input type="text" name="boppCarton_wrinkled"></label>
-      <label>Scratched – Tergores: <input type="text" name="boppCarton_scratched"></label>
-      <label>Unstuck - Tidak Lengket: <input type="text" name="boppCarton_unstuck"></label>
-      <label>Misplaced – Miring, Renggang, Posisi Tidak Tepat: <input type="text" name="boppCarton_misplaced"></label>
-      <label>Torn; Holed - Sobek, Berlubang: <input type="text" name="boppCarton_torn"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="boppPackToggle"> BOPP Pack</label>
-    <div id="boppPackDefects" class="defect-group">
-      <label>Wrinkled - Berkerut, Melipat: <input type="text" name="boppPack_wrinkled"></label>
-      <label>Scratched – Tergores: <input type="text" name="boppPack_scratched"></label>
-      <label>Unstuck - Tidak Lengket: <input type="text" name="boppPack_unstuck"></label>
-      <label>Misplaced – Miring, Renggang, Posisi Tidak Tepat: <input type="text" name="boppPack_misplaced"></label>
-      <label>Torn; Holed - Sobek, Berlubang: <input type="text" name="boppPack_torn"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="tearTapeToggle"> Tear Tape</label>
-    <div id="tearTapeDefects" class="defect-group">
-      <label>Missing Material - Tanpa tear tape: <input type="text" name="tearTape_missing"></label>
-      <label>Uncut - Tanpa U Cut: <input type="text" name="tearTape_uncut"></label>
-      <label>Misplaced – Miring, Renggang, Posisi Tidak Tepat: <input type="text" name="tearTape_misplaced"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="innerFrameToggle"> Inner Frame</label>
-    <div id="innerFrameDefects" class="defect-group">
-      <label>Misplaced – Miring, Renggang, Posisi Tidak Tepat: <input type="text" name="innerFrame_misplaced"></label>
-      <label>Torn; Holed - Sobek, Berlubang: <input type="text" name="innerFrame_torn"></label>
-      <label>Unstuck - Tidak Lengket: <input type="text" name="innerFrame_unstuck"></label>
-      <label>Spotted - Kotor, Ada Goresan: <input type="text" name="innerFrame_spotted"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="aluminumFoilToggle"> Aluminum Foil</label>
-    <div id="aluminumFoilDefects" class="defect-group">
-      <label>Misplaced – Miring, Renggang, Posisi Tidak Tepat: <input type="text" name="aluminumFoil_misplaced"></label>
-      <label>Stuck Tight / Lengket, kelebihan lem: <input type="text" name="aluminumFoil_stuck"></label>
-      <label>Wrinkled - Berkerut, Melipat: <input type="text" name="aluminumFoil_wrinkled"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="taxStampToggle"> Tax Stamp</label>
-    <div id="taxStampDefects" class="defect-group">
-      <label>Misplaced – Miring, Renggang, Posisi Tidak Tepat: <input type="text" name="taxStamp_misplaced"></label>
-      <label>Unstuck - Tidak Lengket: <input type="text" name="taxStamp_unstuck"></label>
-      <label>Wrinkled - Berkerut, Melipat: <input type="text" name="taxStamp_wrinkled"></label>
-      <label>Ineffective Function - Tanda Berfungsi dengan Baik: <input type="text" name="taxStamp_function"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="flyingTaxStampToggle"> Flying Tax Stamp</label>
-    <div id="flyingTaxStampDefects" class="defect-group">
-      <label>Improper Position - Posisi tidak tepat: <input type="text" name="flyingTaxStamp_position"></label>
-      <label>Stamped before Seal - Tercap sebelum sealing box: <input type="text" name="flyingTaxStamp_seal"></label>
-    </div>
-  </div>
-
-  <div class="section">
-    <label><input type="checkbox" id="sideSticksToggle"> Side Sticks</label>
-    <div id="sideSticksDefects" class="defect-group">
-      <label>Crushed - Peseok: <input type="text" name="sideSticks_crushed"></label>
-      <label>Torn; Holed - Sobek, Berlubang: <input type="text" name="sideSticks_torn"></label>
+      <div class="defect-item">
+        <label>Wrinkled - Berkerut, Melipat:</label>
+        <input type="text" name="boppCarton_wrinkled_qty" maxlength="2" placeholder="0">
+        <div class="category-box">
+          <label><input type="radio" name="boppCarton_wrinkled_cat" value="A"> A</label>
+          <label><input type="radio" name="boppCarton_wrinkled_cat" value="B"> B</label>
+          <label><input type="radio" name="boppCarton_wrinkled_cat" value="C"> C</label>
+        </div>
+      </div>
+      <!-- Tambahkan defect-item lain dengan format serupa jika ingin seluruhnya disesuaikan -->
     </div>
   </div>
 
@@ -134,9 +103,11 @@
     sections.forEach(section => {
       const toggle = document.getElementById(section + 'Toggle');
       const defectGroup = document.getElementById(section + 'Defects');
-      toggle.addEventListener('change', function () {
-        defectGroup.style.display = this.checked ? 'block' : 'none';
-      });
+      if (toggle && defectGroup) {
+        toggle.addEventListener('change', function () {
+          defectGroup.style.display = this.checked ? 'block' : 'none';
+        });
+      }
     });
   </script>
 </body>
