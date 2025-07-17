@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Defect Form</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f0f4f8;
@@ -17,21 +19,30 @@
       background-color: #fff;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
     h2 {
       color: #0d6efd;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      text-align: center;
     }
     .section {
       margin-bottom: 40px;
     }
     .section-title {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #ccc;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0d6efd;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #dee2e6;
       padding-bottom: 5px;
-      color: #333;
+    }
+    .section-title::before {
+      content: "\1F464";
+      font-size: 1rem;
     }
     .form-grid {
       display: grid;
@@ -43,116 +54,68 @@
       flex-direction: column;
     }
     label {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-weight: 500;
-      color: #444;
+      color: #333;
     }
     input[type="text"], input[type="date"], input[type="time"], select {
       padding: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
     }
     .checkbox-toggle {
       margin-bottom: 15px;
     }
     .defect-group {
       display: none;
-      background: #f9f9f9;
-      padding: 15px;
-      border-radius: 8px;
-      border-left: 4px solid #0d6efd;
-      margin-top: 10px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
     }
     .defect-item {
       display: grid;
-      grid-template-columns: 2fr 80px 1fr;
+      grid-template-columns: 2fr 80px auto;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 15px;
+      margin-bottom: 15px;
     }
     .category-box {
       display: flex;
       gap: 10px;
     }
     .category-box label {
-      font-weight: 400;
+      font-weight: 500;
+      font-size: 14px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
     }
+    .category-box input[type="radio"] {
+      margin-right: 5px;
+    }
+    .category-box input[value="A"]:checked + label { background-color: #d1e7dd; }
+    .category-box input[value="B"]:checked + label { background-color: #fff3cd; }
+    .category-box input[value="C"]:checked + label { background-color: #f8d7da; }
     @media (max-width: 600px) {
       .form-grid {
         grid-template-columns: 1fr;
       }
       .defect-item {
         grid-template-columns: 1fr;
+        gap: 10px;
       }
     }
   </style>
-</head>
-<body>
-<main>
-  <h2>INPUT NCM</h2>
-
-  <!-- Section: Identitas -->
-  <div class="section">
-    <div class="section-title">Identitas</div>
-    <div class="form-grid">
-      <div class="form-group">
-        <label for="nama">Nama</label>
-        <input type="text" id="nama" name="nama" required>
-      </div>
-      <div class="form-group">
-        <label for="tanggal">Tanggal</label>
-        <input type="date" id="tanggal" name="tanggal" required>
-      </div>
-      <div class="form-group">
-        <label for="jam">Jam</label>
-        <input type="time" id="jam" name="jam" required>
-      </div>
-      <div class="form-group">
-        <label for="shift">Shift</label>
-        <select id="shift" name="shift" required>
-          <option value="">-- Pilih Shift --</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="sku">SKU</label>
-        <input type="text" id="sku" name="sku" required>
-      </div>
-    </div>
-  </div>
-
-  <!-- Section: BOPP Carton -->
-  <div class="section">
-    <div class="checkbox-toggle">
-      <label><input type="checkbox" id="boppCartonToggle"> BOPP Carton</label>
-    </div>
-    <div id="boppCartonDefects" class="defect-group">
-      <div class="defect-item">
-        <label>Wrinkled - Berkerut, Melipat</label>
-        <input type="text" name="boppCarton_wrinkled_qty" maxlength="2" placeholder="0">
-        <div class="category-box">
-          <label><input type="radio" name="boppCarton_wrinkled_cat" value="A"> A</label>
-          <label><input type="radio" name="boppCarton_wrinkled_cat" value="B"> B</label>
-          <label><input type="radio" name="boppCarton_wrinkled_cat" value="C"> C</label>
-        </div>
-      </div>
-      <!-- Tambahkan defect-item lainnya di sini -->
-    </div>
-  </div>
-</main>
-
-<script>
-  const toggles = ["boppCarton"];
-  toggles.forEach(id => {
-    const toggle = document.getElementById(`${id}Toggle`);
-    const group = document.getElementById(`${id}Defects`);
-    toggle.addEventListener('change', function () {
-      group.style.display = this.checked ? 'block' : 'none';
-    });
-  });
-</script>
-</body>
-</html>
+</he
