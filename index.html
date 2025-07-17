@@ -6,83 +6,132 @@
   <title>Dynamic Defect Form</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #0d6efd;
+      margin-bottom: 20px;
     }
     .section {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      color: #333;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #444;
+    }
+    input[type="text"], input[type="date"], input[type="time"], select {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+    }
+    .checkbox-toggle {
+      margin-bottom: 15px;
     }
     .defect-group {
-      margin-left: 20px;
       display: none;
-      border-left: 3px solid #0077cc;
-      padding-left: 20px;
-      background: #ffffff;
+      background: #f9f9f9;
       padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      border-left: 4px solid #0d6efd;
+      margin-top: 10px;
     }
     .defect-item {
-      display: flex;
+      display: grid;
+      grid-template-columns: 2fr 80px 1fr;
       align-items: center;
+      gap: 10px;
       margin-bottom: 10px;
-    }
-    .defect-item label {
-      flex: 1;
-      margin-right: 10px;
-    }
-    .defect-item input[type="text"] {
-      width: 60px;
-      margin-right: 10px;
     }
     .category-box {
       display: flex;
       gap: 10px;
     }
     .category-box label {
-      font-weight: normal;
+      font-weight: 400;
     }
-    .category-box input[type="radio"] {
-      margin-right: 5px;
-    }
-    input[type="text"], select, input[type="date"], input[type="time"] {
-      padding: 5px;
-      width: 100%;
-      max-width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    h2 {
-      color: #005a9c;
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .defect-item {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+<main>
   <h2>INPUT NCM</h2>
 
-  <!-- Identitas Umum -->
+  <!-- Section: Identitas -->
   <div class="section">
-    <label>Nama: <input type="text" name="nama" required></label>
-    <label>Tanggal: <input type="date" name="tanggal" required></label>
-    <label>Jam: <input type="time" name="jam" required></label>
-    <label>Shift:
-      <select name="shift" required>
-        <option value="">-- Pilih Shift --</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-    </label>
-    <label>SKU: <input type="text" name="sku" required></label>
+    <div class="section-title">Identitas</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" name="nama" required>
+      </div>
+      <div class="form-group">
+        <label for="tanggal">Tanggal</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+      </div>
+      <div class="form-group">
+        <label for="jam">Jam</label>
+        <input type="time" id="jam" name="jam" required>
+      </div>
+      <div class="form-group">
+        <label for="shift">Shift</label>
+        <select id="shift" name="shift" required>
+          <option value="">-- Pilih Shift --</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sku">SKU</label>
+        <input type="text" id="sku" name="sku" required>
+      </div>
+    </div>
   </div>
 
-  <!-- Contoh Bagian Defect dengan Desain Baru -->
+  <!-- Section: BOPP Carton -->
   <div class="section">
-    <label><input type="checkbox" id="boppCartonToggle"> BOPP Carton</label>
+    <div class="checkbox-toggle">
+      <label><input type="checkbox" id="boppCartonToggle"> BOPP Carton</label>
+    </div>
     <div id="boppCartonDefects" class="defect-group">
       <div class="defect-item">
-        <label>Wrinkled - Berkerut, Melipat:</label>
+        <label>Wrinkled - Berkerut, Melipat</label>
         <input type="text" name="boppCarton_wrinkled_qty" maxlength="2" placeholder="0">
         <div class="category-box">
           <label><input type="radio" name="boppCarton_wrinkled_cat" value="A"> A</label>
@@ -90,25 +139,20 @@
           <label><input type="radio" name="boppCarton_wrinkled_cat" value="C"> C</label>
         </div>
       </div>
-      <!-- Tambahkan defect-item lain dengan format serupa jika ingin seluruhnya disesuaikan -->
+      <!-- Tambahkan defect-item lainnya di sini -->
     </div>
   </div>
+</main>
 
-  <script>
-    const sections = [
-      'boppCarton', 'boppPack', 'tearTape', 'innerFrame',
-      'aluminumFoil', 'taxStamp', 'flyingTaxStamp', 'sideSticks'
-    ];
-
-    sections.forEach(section => {
-      const toggle = document.getElementById(section + 'Toggle');
-      const defectGroup = document.getElementById(section + 'Defects');
-      if (toggle && defectGroup) {
-        toggle.addEventListener('change', function () {
-          defectGroup.style.display = this.checked ? 'block' : 'none';
-        });
-      }
+<script>
+  const toggles = ["boppCarton"];
+  toggles.forEach(id => {
+    const toggle = document.getElementById(`${id}Toggle`);
+    const group = document.getElementById(`${id}Defects`);
+    toggle.addEventListener('change', function () {
+      group.style.display = this.checked ? 'block' : 'none';
     });
-  </script>
+  });
+</script>
 </body>
 </html>
